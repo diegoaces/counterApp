@@ -9,7 +9,6 @@ class CountersViewModel(application: Application) : AndroidViewModel(application
     private val repository = CountersRepository(application)
 
     init {
-
         getAllFromServer()
     }
 

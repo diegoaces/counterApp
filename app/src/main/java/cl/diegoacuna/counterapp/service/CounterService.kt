@@ -13,7 +13,7 @@ import retrofit2.http.*
 interface CounterService {
 
     @GET("/api/v1/counters")
-    fun getCounters(): Call<List<LiveData<Counter>>>
+    fun getCounters(): Call<List<Counter>>
 
     @FormUrlEncoded
     @POST("/api/v1/counter")

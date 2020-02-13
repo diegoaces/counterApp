@@ -41,24 +41,20 @@ class CountersRepository(application: Application) {
         val counterService: CounterService = CounterService.Factory.create()
 
         counterService.getCounters()
-            .enqueue(object : Callback<List<LiveData<Counter>>> {
-                override fun onFailure(call: Call<List<LiveData<Counter>>>, t: Throwable) {
+            .enqueue(object : Callback<List<Counter>> {
+                override fun onFailure(call: Call<List<Counter>>, t: Throwable) {
                     Log.e("Error", t.message.toString())
                 }
 
                 override fun onResponse(
-                    call: Call<List<LiveData<Counter>>>,
-                    response: Response<List<LiveData<Counter>>>
+                    call: Call<List<Counter>>,
+                    response: Response<List<Counter>>
                 ) {
                     if (response.isSuccessful) {
                         response.body()?.forEach { counterApi ->
 
-                            val counter = counterApi.value
-
-                            if (counter != null) {
-                                counter.remote = 1
-                                insert(counter)
-                            }
+                            counterApi.remote = 1
+                            insert(counterApi)
 
                         }
                     }
