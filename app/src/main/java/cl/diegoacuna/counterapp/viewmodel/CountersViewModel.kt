@@ -13,6 +13,7 @@ class CountersViewModel(application: Application) : AndroidViewModel(application
     }
 
     val counters = repository.getCounters()
+    val counter = repository.getCounters().value?.sumBy { it.count }
 
     fun saveCounter(counter: Counter) {
         repository.insert(counter)
@@ -21,6 +22,7 @@ class CountersViewModel(application: Application) : AndroidViewModel(application
     private fun getAllFromServer() {
         repository.getCountersOnline()
     }
+
 
     fun deleteCounter(counter: Counter) {
         repository.delete(counter)

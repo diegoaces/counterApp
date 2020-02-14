@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CounterApp</string>
+    <string name="item_count_value">0</string>
+    <string name="item_counter_plus">+</string>
+    <string name="item_counter_value">0</string>
+    <string name="item_counter_minus">-</string>
+    <string name="item_counter_title">Counter</string>
+    <string name="total_title">Total :</string>
 </resources>

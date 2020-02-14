@@ -2,6 +2,7 @@ package cl.diegoacuna.counterapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.Bindable
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -23,12 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         countersViewModel = ViewModelProvider(this).get(CountersViewModel::class.java)
 
-        val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this,
-                R.layout.activity_main
-            )
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
+            this, R.layout.activity_main
+        )
 
         binding.countersViewModel = countersViewModel
+
         binding.lifecycleOwner = this
 
         counter_rv.apply {
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         countersViewModel.saveCounter(Counter("OK", 0))
     }
 }
+
 @BindingAdapter("data")
 fun setRecyclerViewProperties(recyclerView: RecyclerView?, data: MutableList<Counter>?) {
     val adapter = recyclerView?.adapter
