@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:text="@{countersViewModel.counter.toString()}" />
+                android:text="@{countersViewModel.counters.toString()}" />
 
         </LinearLayout>
 
@@ -72,7 +72,6 @@
 
 
     <data>
-
         <variable
             name="countersViewModel"
             type="cl.diegoacuna.counterapp.viewmodel.CountersViewModel" />

@@ -1,17 +1,25 @@
 package cl.diegoacuna.counterapp.ui
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.Bindable
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cl.diegoacuna.counterapp.R
 import cl.diegoacuna.counterapp.data.Counter
 import cl.diegoacuna.counterapp.databinding.ActivityMainBinding
+import cl.diegoacuna.counterapp.ui.CounterRecyclerViewAdapter.OnItemListener
 import cl.diegoacuna.counterapp.viewmodel.CountersViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,11 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         counter_rv.apply {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            addItemDecoration(DividerItemDecoration(context, VERTICAL))
 
             adapter = CounterRecyclerViewAdapter(mutableListOf(),
 
-                object : CounterRecyclerViewAdapter.OnItemListener {
+                object : OnItemListener {
                     override fun onDeleteItem(counter: Counter) {
                         countersViewModel.deleteCounter(counter)
                     }
@@ -64,6 +72,8 @@ class MainActivity : AppCompatActivity() {
     private fun addCounter() {
         countersViewModel.saveCounter(Counter("OK", 0))
     }
+
+
 }
 
 @BindingAdapter("data")

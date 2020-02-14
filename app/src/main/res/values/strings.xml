@@ -6,4 +6,6 @@
     <string name="item_counter_minus">-</string>
     <string name="item_counter_title">Counter</string>
     <string name="total_title">Total :</string>
+    <string name="btn_ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
 </resources>
