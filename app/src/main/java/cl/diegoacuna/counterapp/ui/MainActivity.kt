@@ -1,16 +1,9 @@
 package cl.diegoacuna.counterapp.ui
 
-import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
@@ -35,9 +28,8 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this, R.layout.activity_main
         )
-
+        
         binding.countersViewModel = countersViewModel
-
         binding.lifecycleOwner = this
 
         counter_rv.apply {
